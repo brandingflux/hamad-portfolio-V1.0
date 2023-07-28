@@ -715,6 +715,12 @@ body.light-theme {
   margin-bottom: 0.25rem;
 }
 
+.work__subtitle {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: 0.25rem;
+}
+
 .work__button {
   width: max-content;
   color: var(--first-color);
