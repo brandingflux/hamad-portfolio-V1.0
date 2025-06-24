@@ -214,33 +214,26 @@ sr.reveal(`.work__card`, {
   distance: "30px",
 });
 
-sr.reveal(`.testimonial__container`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
+// sr.reveal(`.testimonial__container`, {
+//   delay: 100,
+//   scale: 0.9,
+//   origin: "left",
+//   distance: "30px",
+// });
 
-sr.reveal(`.contact__info, .contact__title-info`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "left",
-  distance: "30px",
-});
+// sr.reveal(`.contact__info, .contact__title-info`, {
+//   delay: 100,
+//   scale: 0.9,
+//   origin: "left",
+//   distance: "30px",
+// });
 
-sr.reveal(`.contact__form, .contact__title-form`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "right",
-  distance: "30px",
-});
-
-sr.reveal(`.footer, footer__container`, {
-  delay: 100,
-  scale: 0.9,
-  origin: "bottom",
-  distance: "30px",
-});
+// sr.reveal(`.contact__form, .contact__title-form`, {
+//   delay: 100,
+//   scale: 0.9,
+//   origin: "right",
+//   distance: "30px",
+// });
 
 /*=============== WORK MODAL POPUP ===============*/
 const workModalLink = document.getElementById('work-modal-link');
