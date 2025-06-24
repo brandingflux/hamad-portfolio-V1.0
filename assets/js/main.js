@@ -366,6 +366,17 @@ window.addEventListener('DOMContentLoaded', function() {
   mixer.on('mixEnd', function() {
     workContainer.style.height = 'auto';
     workContainer.style.overflow = 'visible';
+    // Also fix parent .grid and .container
+    const gridParent = workContainer.closest('.grid');
+    if (gridParent) {
+      gridParent.style.height = 'auto';
+      gridParent.style.overflow = 'visible';
+    }
+    const containerParent = workContainer.closest('.container');
+    if (containerParent) {
+      containerParent.style.height = 'auto';
+      containerParent.style.overflow = 'visible';
+    }
   });
 
   // Re-attach modal event listeners for new buttons
