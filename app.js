@@ -86,7 +86,7 @@ particlesJS('particles-js',
       "events": {
         "onhover": {
           "enable": true,
-          "mode": "repulse"
+          "mode": "grab"
         },
         "onclick": {
           "enable": true,
@@ -131,3 +131,59 @@ particlesJS('particles-js',
   }
 
 );
+
+// Add a function to update particles color dynamically
+window.setParticlesColor = function(hex) {
+  if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+    var pJS = window.pJSDom[0].pJS;
+    pJS.particles.color.value = hex;
+    pJS.particles.line_linked.color = hex;
+    // Update color_rgb_line for lines
+    if (typeof hex === 'string') {
+      var rgb = hexToRgb(hex);
+      pJS.particles.line_linked.color_rgb_line = rgb;
+    }
+    // Redraw particles
+    pJS.fn.particlesEmpty();
+    pJS.fn.particlesCreate();
+  }
+};
+
+// Robust touch-to-mouse mapping for particles.js canvas
+window.addEventListener('DOMContentLoaded', function() {
+  function addTouchToMouseEvents() {
+    var canvas = document.querySelector('#particles-js > .particles-js-canvas-el');
+    if (!canvas) return setTimeout(addTouchToMouseEvents, 200);
+
+    // Touch start = mouseenter
+    canvas.addEventListener('touchstart', function(e) {
+      if (e.touches.length > 0) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent('mouseenter', {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      }
+    }, {passive: false});
+
+    // Touch move = mousemove
+    canvas.addEventListener('touchmove', function(e) {
+      if (e.touches.length > 0) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent('mousemove', {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      }
+    }, {passive: false});
+
+    // Touch end = mouseleave
+    canvas.addEventListener('touchend', function(e) {
+      var mouseEvent = new MouseEvent('mouseleave', {});
+      canvas.dispatchEvent(mouseEvent);
+    });
+  }
+  addTouchToMouseEvents();
+});
