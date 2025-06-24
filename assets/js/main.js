@@ -34,15 +34,6 @@ modalClose.forEach((mc) => {
 
 /*=============== MIXITUP FILTER PORTFOLIO ===============*/
 
-let mixer = mixitup(".work__container", {
-  selectors: {
-    target: ".work__card",
-  },
-  animation: {
-    duration: 300,
-  },
-});
-
 /* Link active work */
 const workLinks = document.querySelectorAll(".work__item");
 
@@ -359,6 +350,22 @@ window.addEventListener('DOMContentLoaded', function() {
       </a>
     `;
     workContainer.appendChild(card);
+  });
+
+  // Initialize MixItUp AFTER cards are in the DOM
+  let mixer = mixitup(workContainer, {
+    selectors: {
+      target: ".work__card",
+    },
+    animation: {
+      duration: 300,
+    },
+  });
+
+  // Fix: Always reset height/overflow after filtering
+  mixer.on('mixEnd', function() {
+    workContainer.style.height = 'auto';
+    workContainer.style.overflow = 'visible';
   });
 
   // Re-attach modal event listeners for new buttons

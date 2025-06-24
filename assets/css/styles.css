@@ -220,6 +220,16 @@ body.light-theme {
   overflow: visible;
 }
 
+section {
+  overflow: visible !important;
+}
+
+.work__container {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 1px;
+}
+
 .section {
   padding: 4.5rem 0 1rem;
 }
@@ -679,10 +689,6 @@ body.light-theme {
 }
 
 /*=============== WORK ===============*/
-
-.work__container {
-  padding-top: 1rem;
-}
 
 .work__filters {
   display: flex;
